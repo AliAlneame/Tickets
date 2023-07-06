@@ -21,7 +21,7 @@ import com.example.tickets.movieList
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun App() {
+fun MovieScreenPager() {
     val pagerState = rememberPagerState(initialPage = movieList.imageURLs.size / 2)
     var selectedImageUrl by remember { mutableStateOf(movieList.imageURLs[movieList.imageURLs.size / 2]) }
 

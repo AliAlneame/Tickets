@@ -1,4 +1,4 @@
-package com.example.tickets.Composable
+package com.example.tickets.Screens.Booking
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -42,7 +42,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.tickets.BookingUIState
-import com.example.tickets.BookingViewModel
+
+import com.example.tickets.Composable.ExitButton
 import com.example.tickets.R
 import com.example.tickets.ui.theme.GGrey
 import com.example.tickets.ui.theme.MGrey
@@ -64,9 +65,9 @@ fun BookingContent(state: BookingUIState) {
             .background(Black)
     ) {
 
-        Cinema(modifier = Modifier.Companion.weight(2f))
+        Cinema(modifier = Modifier.weight(2f))
 
-        BottomSheet(state, Modifier.weight(0.7f))
+        BottomSheet(state, Modifier.weight(0.8f))
     }
 }
 
@@ -115,7 +116,17 @@ private fun Cinema(modifier: Modifier = Modifier) {
 
 
         }
-        ExitButton()
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 46.dp, start = 16.dp, end = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            ExitButton()
+        }
+
 
     }
 }

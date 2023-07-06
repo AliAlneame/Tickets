@@ -1,4 +1,4 @@
-package com.example.tickets.Composable
+package com.example.tickets.Screens.MovieDetails
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,18 +22,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
+import com.example.tickets.Composable.ExitButton
 import com.example.tickets.R
 import com.example.tickets.ui.theme.Orange
 import com.example.tickets.ui.theme.SGray
 import com.example.tickets.ui.theme.TSText
 
 @Composable
-fun UpperScreen(imageResId: Int) {
+fun UpperScreen(state: MovieDetailsUIState) {
     Box(modifier = Modifier.fillMaxWidth()) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = rememberAsyncImagePainter(model = state.movieImage),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -83,7 +84,7 @@ fun UpperScreen(imageResId: Int) {
                         .padding(horizontal = 4.dp)
                 )
                 Text(
-                    text = "2h 23m",
+                    text = state.movieDuration,
                     color = TSText,
                     modifier = Modifier
                 )
