@@ -1,4 +1,4 @@
-package com.example.tickets
+package com.example.tickets.Screens.ListofMovies
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

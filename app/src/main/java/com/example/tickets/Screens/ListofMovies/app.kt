@@ -1,4 +1,4 @@
-package com.example.tickets.Composable
+package com.example.tickets.Screens.ListofMovies
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -15,8 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.tickets.MoviePager
-import com.example.tickets.movieList
+import com.example.tickets.Composable.Background
 
 
 @OptIn(ExperimentalFoundationApi::class)

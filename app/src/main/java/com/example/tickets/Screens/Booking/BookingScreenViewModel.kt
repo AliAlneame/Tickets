@@ -1,8 +1,6 @@
 package com.example.tickets.Screens.Booking
 
 import com.example.tickets.BaseViewModel
-import com.example.tickets.BookingUIState
-import com.example.tickets.DateUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

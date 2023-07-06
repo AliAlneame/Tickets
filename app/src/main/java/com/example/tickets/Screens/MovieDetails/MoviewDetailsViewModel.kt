@@ -1,8 +1,6 @@
 package com.example.tickets.Screens.MovieDetails
 
 import com.example.tickets.BaseViewModel
-import com.example.tickets.BookingUIState
-import com.example.tickets.Composable.RatingItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
