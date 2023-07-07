@@ -12,8 +12,6 @@ S
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 w
 Gapp/src/androidTest/java/com/example/tickets/ExampleInstrumentedTest.kt,7\3\73456909dd26661ed086ce1b90073e488150648e
 h
@@ -34,5 +32,3 @@ g
 7app/src/main/java/com/example/tickets/ui/theme/Theme.kt,4\e\4ee49b9dc3782b1afb1c7f093ab0923768b5a6ad
 f
 6app/src/main/java/com/example/tickets/ui/theme/Type.kt,9\0\90762c494a14171688f1e57aba44aba2ee39134f
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

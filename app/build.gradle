@@ -82,6 +82,7 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
     implementation 'androidx.hilt:hilt-work:1.0.0'
     implementation "androidx.work:work-runtime:2.8.1"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
 
 }

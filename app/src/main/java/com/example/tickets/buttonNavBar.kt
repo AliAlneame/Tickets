@@ -26,14 +26,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun BottomNav(){
+fun BottomNav() {
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(vertical = 12.dp),
 
         horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
     ) {
         Box(
             Modifier
@@ -46,36 +45,45 @@ fun BottomNav(){
                 tint = Color(0xDEFFFFFF)
             )
         }
-        Icon(
-            modifier = Modifier.fillMaxHeight(),
-            icon = R.drawable.search,
-            tint = Color(0xDE000000)
-        )
-
-        Row(modifier = Modifier.fillMaxHeight(), Arrangement.spacedBy(4.dp), Alignment.CenterVertically) {
+        Box(Modifier.wrapContentSize(Alignment.Center)) {
             Icon(
-                modifier = Modifier.fillMaxHeight(),
-                icon = R.drawable.ticket,
+                modifier = Modifier.padding(12.dp),
+                icon = R.drawable.search,
                 tint = Color(0xDE000000)
             )
-            Box(
-                modifier = Modifier
-                    .width(20.dp)
-                    .background(Color(0xFFFF5524), shape = CircleShape)
-                    .wrapContentSize(Alignment.Center)
-            ) {
-                Text(text = "5", color = Color(0xDEFFFFFF), textAlign = TextAlign.Center)
-            }
         }
 
-        Icon(
-            modifier = Modifier.fillMaxHeight(),
-            icon = R.drawable.profile,
-            tint = Color(0xDE000000)
-        )
+        Box(Modifier.wrapContentSize(Alignment.Center)) {
+            Row(
+                modifier = Modifier.padding(12.dp),
+
+                verticalAlignment =Alignment.CenterVertically
+            ) {
+                Icon(
+                    icon = R.drawable.ticket,
+                    tint = Color(0xDE000000)
+                )
+
+                Box(
+
+                ) {
+                    Text(text = "5", color = Color(0xDEFFFFFF), textAlign = TextAlign.Center, modifier =Modifier.padding(4.dp).background(Color(0xFFFF5524), shape = CircleShape) )
+                }
+            }
+
+        }
+
+        Box(Modifier.wrapContentSize(Alignment.Center)) {
+
+            Icon(
+                modifier = Modifier.padding(12.dp),
+                icon = R.drawable.profile,
+                tint = Color(0xDE000000)
+            )
+
+        }
     }
 }
-
 @Composable
 fun Icon(@DrawableRes icon: Int, tint: Color, modifier: Modifier = Modifier ) {
     Icon(
