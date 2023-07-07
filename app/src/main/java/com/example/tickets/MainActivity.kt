@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import com.example.tickets.Screens.Booking.BookingScreen
+import com.example.tickets.Screens.ListofMovies.HomeScreen
 import com.example.tickets.Screens.MovieDetails.MovieDetailsScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,12 +17,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BookingScreen()
 
+            CinmaApp()
         }
-
-
-
     }
 }
 

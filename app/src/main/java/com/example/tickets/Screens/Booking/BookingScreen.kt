@@ -3,6 +3,7 @@ package com.example.tickets.Screens.Booking
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,43 +40,45 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.tickets.Composable.BuyTicketsButton
+import com.example.tickets.Composable.CardDateItem
+import com.example.tickets.Composable.CardTimeItem
+import com.example.tickets.Composable.ColumnSeats
 
 import com.example.tickets.Composable.ExitButton
+import com.example.tickets.Composable.RowIconText
 import com.example.tickets.R
+import com.example.tickets.Screen
 import com.example.tickets.ui.theme.GGrey
 import com.example.tickets.ui.theme.MGrey
 import com.example.tickets.ui.theme.Orange
 
 @Composable
 fun BookingScreen(
+    navController: NavController,
     viewModel: BookingViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    BookingContent(state)
+    BookingContent(state, onClickExit = {navController.popBackStack(Screen.HomeScreen.route,false)})
 }
-
 @Composable
-fun BookingContent(state: BookingUIState) {
+fun BookingContent(state: BookingUIState,onClickExit: () -> Unit)  {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Black)
     ) {
-
-        Cinema(modifier = Modifier.weight(2f))
-
+        Cinema(modifier = Modifier.weight(2f), onClickExit = onClickExit)
         BottomSheet(state, Modifier.weight(0.8f))
     }
 }
-
 @Composable
-private fun Cinema(modifier: Modifier = Modifier) {
+private fun Cinema(modifier: Modifier = Modifier,onClickExit: () -> Unit)  {
     Box(modifier = modifier) {
-
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -88,7 +93,6 @@ private fun Cinema(modifier: Modifier = Modifier) {
                     .padding(top = 58.dp)
                     .fillMaxHeight(.1f)
             )
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -100,7 +104,6 @@ private fun Cinema(modifier: Modifier = Modifier) {
                 ColumnSeats(rowsNum = 5, modifier = Modifier.weight(1f))
                 ColumnSeats(rowsNum = 5, rotation = -10f,Modifier.weight(1f))
             }
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,10 +115,7 @@ private fun Cinema(modifier: Modifier = Modifier) {
                 RowIconText(text = "Taken", iconColor = MGrey)
                 RowIconText(text = "Selected", iconColor = Orange)
             }
-
-
         }
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -123,13 +123,10 @@ private fun Cinema(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ){
-            ExitButton()
+            ExitButton(onClickExit = onClickExit)
         }
-
-
     }
 }
-
 @Composable
 private fun BottomSheet(state: BookingUIState, modifier: Modifier = Modifier) {
     Column(
@@ -147,7 +144,7 @@ private fun BottomSheet(state: BookingUIState, modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(end = 24.dp, start = 24.dp, top = 24.dp)
         ) {
             items(state.bookingDateItems) {
-                CardDateItem(date = it.date, day = it.day)
+                CardDateItem(date = it.date, day = it.day, onClick = {})
             }
         }
 
@@ -159,7 +156,7 @@ private fun BottomSheet(state: BookingUIState, modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(horizontal = 24.dp)
         ) {
             items(state.timeItems) {
-                CardTimeItem(time = it)
+                CardTimeItem(time = it, onClick = {})
             }
         }
 
@@ -174,144 +171,11 @@ private fun BottomSheet(state: BookingUIState, modifier: Modifier = Modifier) {
                 Text(text = "${state.availableTickets} tickets", color = GGrey)
             }
 
-            PrimaryButton(text = "Buy tickets")
+            BuyTicketsButton(text = "Buy tickets")
         }
 
 
     }
 }
-@Composable
-fun ColumnSeats(rowsNum: Int, rotation: Float = 0f, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-    ) {
-        for (i in 1..rowsNum) {
-            RowSeat(rotation, modifier = Modifier.weight(1f))
-        }
-
-    }
-}
-@Composable
-fun RowSeat(rotation: Float = 0f, modifier: Modifier = Modifier) {
-    val paddingValue = if (rotation == 0f) {
-        PaddingValues(12.dp)
-    } else {
-        PaddingValues(top = 12.dp, start = 12.dp, end = 12.dp, bottom = 32.dp)
-    }
-
-    Row(
-        modifier = modifier
-            .fillMaxSize()
-            .rotate(rotation)
-            .padding(paddingValue)
-    ) {
-        IconSeat(modifier = Modifier.weight(1f))
-        IconSeat(modifier = Modifier.weight(1f))
-    }
-
-}
-
-@Composable
-fun IconSeat(modifier: Modifier = Modifier) {
-    Icon(
-        modifier = modifier.fillMaxSize(),
-        painter = painterResource(id = R.drawable.seat),
-        contentDescription = "seat",
-        tint = GGrey,
-    )
-}
-
-@Composable
-fun RowIconText(
-    text: String,
-    iconColor: Color,
-    modifier: Modifier = Modifier
-) {
-    Row(
-
-    ) {
-        Icon(
-            painter = painterResource(id = R.drawable.dark_cir),
-            contentDescription = "Dot",
-            modifier = modifier.size(20.dp),
-            tint = iconColor
-        )
-        Text(text = text, color = MGrey)
-    }
-}
-
-@Composable
-fun CardDateItem(date: String, day: String) {
-    Card(
-        shape = RoundedCornerShape(24.dp),
-        border = BorderStroke(1.dp, GGrey),
-        modifier = Modifier
-            .height(64.dp)
-            .width(54.dp)
-    ) {
-        ColumnFillInCard {
-            TextCenteredInCard(date)
-            TextCenteredInCard(day)
-        }
-    }
-}
-@Composable
-fun ColumnFillInCard(
-    modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.() -> Unit
-) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .fillMaxSize()
-            .background(White),
-        content = content
-    )
-}
-@Composable
-fun TextCenteredInCard(value: String, modifier: Modifier = Modifier) {
-    Text(text = value, textAlign = TextAlign.Center, modifier = modifier.fillMaxWidth())
-}
-@Composable
-fun CardTimeItem(time: String) {
-    Card(
-        shape = RoundedCornerShape(20.dp),
-        border = BorderStroke(1.dp, GGrey),
-        modifier = Modifier
-            .height(38.dp)
-            .width(56.dp),
-    ) {
-        ColumnFillInCard {
-            TextCenteredInCard(time)
-        }
-    }
-}
-@Composable
-fun PrimaryButton(text: String,modifier: Modifier = Modifier) {
-    Button(
-        onClick = {},
-        modifier = modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = Orange),
-        contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
-    ) {
-        Icon(
-            painter = painterResource(id = R.drawable.calender),
-            contentDescription = null,
-            modifier = Modifier.size(20.dp),
-        )
-        Text(text = text, fontSize = 16.sp, modifier = Modifier.padding(start = 8.dp))
-    }
-}
-@Preview
-@Composable
-fun CardDateItemPreview() {
-    CardDateItem("17","sun")
-}
 
 
-
-@Preview
-@Composable
-fun BookingScreenPreview() {
-    BookingScreen()
-}

@@ -31,7 +31,7 @@ import com.example.tickets.ui.theme.SGray
 import com.example.tickets.ui.theme.TSText
 
 @Composable
-fun UpperScreen(state: MovieDetailsUIState) {
+fun UpperScreen(state: MovieDetailsUIState,onClickExit : () -> Unit) {
     Box(modifier = Modifier.fillMaxWidth()) {
         Image(
             painter = rememberAsyncImagePainter(model = state.movieImage),
@@ -64,7 +64,7 @@ fun UpperScreen(state: MovieDetailsUIState) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ExitButton()
+            ExitButton(onClickExit = onClickExit )
             Row(
                 modifier = Modifier
                     .wrapContentWidth(Alignment.End)

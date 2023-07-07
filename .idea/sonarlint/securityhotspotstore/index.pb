@@ -1,7 +1,5 @@
 
 g
-7app/src/main/java/com/example/tickets/ui/theme/Color.kt,2\f\2ffb3e68ffdd93140355510a36a7b6111c8ebb2d
-g
 7app/src/main/java/com/example/tickets/ui/theme/Theme.kt,4\e\4ee49b9dc3782b1afb1c7f093ab0923768b5a6ad
 f
 6app/src/main/java/com/example/tickets/ui/theme/Type.kt,9\0\90762c494a14171688f1e57aba44aba2ee39134f
@@ -11,8 +9,6 @@ h
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 w
 Gapp/src/androidTest/java/com/example/tickets/ExampleInstrumentedTest.kt,7\3\73456909dd26661ed086ce1b90073e488150648e
-`
-0app/src/main/java/com/example/tickets/Tickets.kt,3\5\358c9e80a96f8bd819c907aa476734f10131c7f2
 F
 app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
 P
@@ -38,3 +34,5 @@ X
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

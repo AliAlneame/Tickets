@@ -31,21 +31,54 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.example.tickets.Composable.MovieRow
 
 import com.example.tickets.Composable.RatingItem
 import com.example.tickets.Composable.Tags
 
 import com.example.tickets.R
+import com.example.tickets.Screen
 
 import com.example.tickets.ui.theme.Orange
-
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MovieDetails(modifier: Modifier = Modifier,state: MovieDetailsUIState) {
+fun MovieDetailsScreen(
+    navController: NavController,
+    viewModel: MovieDetailsViewModel = hiltViewModel()
+) {
+    val state by viewModel.state.collectAsState()
+    Content(state, onClickBookingButton = { navController.navigate(Screen.BookingScreen.route)}, onClickExit = { navController.popBackStack(Screen.HomeScreen.route,false)}
+    )
+}
+@Composable
+fun Content(state: MovieDetailsUIState, onClickBookingButton: () -> Unit, onClickExit: () -> Unit) {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        UpperScreen(state,onClickExit = onClickExit,)
+        MovieDetails(
+            state = state,
+            onClickBookingButton = onClickBookingButton,
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .height(455.dp)
+                .fillMaxWidth()
+                .clip(shape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp))
+                .background(color = Color.White)
+        )
+    }
+}
+@Composable
+fun MovieDetails(
+    modifier: Modifier = Modifier,
+    state: MovieDetailsUIState,
+    onClickBookingButton: () -> Unit
+) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -65,9 +98,9 @@ fun MovieDetails(modifier: Modifier = Modifier,state: MovieDetailsUIState) {
                 .padding(top = 32.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            RatingItem("IMDB", state.rating[0], )
-            RatingItem("Rotten Tomatoes", state.rating[1] )
-            RatingItem("IGN", state.rating[2],)
+            RatingItem("IMDB", state.rating[0])
+            RatingItem("Rotten Tomatoes", state.rating[1])
+            RatingItem("IGN", state.rating[2])
         }
         Text(
             text = state.movieName,
@@ -108,7 +141,7 @@ fun MovieDetails(modifier: Modifier = Modifier,state: MovieDetailsUIState) {
 
         )
         Button(
-            onClick = { },
+            onClick = { onClickBookingButton() },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Orange,
                 contentColor = Color.White
@@ -117,10 +150,6 @@ fun MovieDetails(modifier: Modifier = Modifier,state: MovieDetailsUIState) {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(bottom = 16.dp)
-
-
-
-
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.outline_credit_card_24),
@@ -129,63 +158,9 @@ fun MovieDetails(modifier: Modifier = Modifier,state: MovieDetailsUIState) {
                 modifier = Modifier
                     .size(28.dp)
                     .padding(horizontal = 4.dp)
-
-
             )
             Text(text = "Booking")
         }
     }
 }
 
-@Composable
-fun MovieRow(modifier: Modifier = Modifier, imageURLs: List<String>,) {
-    LazyRow(
-        modifier = modifier.padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(imageURLs) { imageURL ->
-            Image(
-                painter = rememberAsyncImagePainter(model = imageURL),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .size(60.dp)
-                    .clip(CircleShape)
-            )
-        }
-    }
-}
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Preview
-@Composable
-fun MovieDetailsScreen(
-    viewModel: MovieDetailsViewModel = hiltViewModel()
-
-
-) {
-    val state by viewModel.state.collectAsState()
-    Content(state)
-
-}
-
-@Composable
-fun Content(state: MovieDetailsUIState){
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        UpperScreen(state)
-
-        MovieDetails(
-            state=state,
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .height(455.dp)
-                .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp))
-                .background(color = Color.White)
-        )
-
-
-    }
-
-}

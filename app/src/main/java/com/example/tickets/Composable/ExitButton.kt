@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.dp
 import com.example.tickets.R
 import com.example.tickets.ui.theme.P
 import com.example.tickets.ui.theme.SGray
-@Preview
+
 @Composable
-fun ExitButton() {
+fun ExitButton(onClickExit : () -> Unit ) {
     IconButton(
-        onClick = { },
+        onClick = { onClickExit()},
         modifier = Modifier
             .wrapContentWidth(Alignment.Start)
             .clip(CircleShape)

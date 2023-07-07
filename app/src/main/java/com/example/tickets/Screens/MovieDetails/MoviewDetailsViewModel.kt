@@ -29,7 +29,6 @@ class MovieDetailsViewModel @Inject constructor() :
         "63%",
         "4",
     )
-
     init {
         _state.update {
             it.copy(
@@ -43,6 +42,4 @@ class MovieDetailsViewModel @Inject constructor() :
             )
         }
     }
-
-
 }
