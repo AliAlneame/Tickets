@@ -12,11 +12,9 @@ import com.example.tickets.Screens.MovieDetails.MovieDetailsScreen
 fun CinmaApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
-
         composable(Screen.HomeScreen.route) { HomeScreen(navController) }
         composable(Screen.MovieDetailsScreen.route) { MovieDetailsScreen(navController) }
         composable(Screen.BookingScreen.route) { BookingScreen(navController) }
-
-
+        DetailsScreen(navController)
     }
 }

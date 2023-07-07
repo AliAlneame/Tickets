@@ -1,0 +1,15 @@
+package com.example.tickets.di
+
+import com.example.tickets.repository.MovieRepositoryImpl
+import com.example.tickets.repository.MoviesRepository
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+    @Binds
+    abstract fun provideMovieRepository(repository: MovieRepositoryImpl): MoviesRepository
+}

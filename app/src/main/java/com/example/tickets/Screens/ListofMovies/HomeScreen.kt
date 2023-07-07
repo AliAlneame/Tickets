@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -38,6 +37,7 @@ import com.example.tickets.Composable.RowTagsChips
 import com.example.tickets.Composable.TextCentered
 import com.example.tickets.R
 import com.example.tickets.Screen
+import com.example.tickets.navigateTOMovieDetails
 import com.example.tickets.ui.theme.GGrey
 
 
@@ -50,13 +50,16 @@ fun HomeScreen(
     HomeContent(
         state,
         viewModel,
-        onClick = { navController.navigate(Screen.MovieDetailsScreen.route) })
+        onClick = {id ->
+            navController.navigateTOMovieDetails(id)
+        }
+    )
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeContent(state: HomeUIState, viewModel: HomeScreenInteractions, onClick: () -> Unit) {
+fun HomeContent(state: HomeUIState, viewModel: HomeScreenInteractions, onClick: (Int) -> Unit) {
     val pagerState = rememberPagerState(initialPage = state.movies.size / 2)
     var selectedMovie by remember { mutableStateOf(state.movies[state.movies.size / 2]) }
     Scaffold(bottomBar = { BottomNav() }) {
@@ -73,7 +76,7 @@ fun HomeContent(state: HomeUIState, viewModel: HomeScreenInteractions, onClick: 
                         .padding(top = 120.dp)
                         .fillMaxWidth(),
                     pagerState = pagerState,
-                    onClick = onClick,
+                    onClick = { onClick(pagerState.currentPage) },
                     items = state.movies
                 ) { movie ->
                     selectedMovie = movie
