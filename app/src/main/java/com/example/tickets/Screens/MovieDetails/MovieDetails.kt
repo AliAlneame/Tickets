@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -66,8 +67,8 @@ fun Content(state: MovieDetailsUIState, onClickBookingButton: () -> Unit, onClic
             onClickBookingButton = onClickBookingButton,
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .height(455.dp)
                 .fillMaxWidth()
+                .fillMaxHeight(0.55f)
                 .clip(shape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp))
                 .background(color = Color.White)
         )

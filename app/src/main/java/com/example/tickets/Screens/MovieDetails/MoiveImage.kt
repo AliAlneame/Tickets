@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -32,13 +33,15 @@ import com.example.tickets.ui.theme.TSText
 
 @Composable
 fun UpperScreen(state: MovieDetailsUIState,onClickExit : () -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth()) {
+    Box(modifier = Modifier.fillMaxWidth()
+        .fillMaxHeight(0.5f)
+    ){
         Image(
             painter = rememberAsyncImagePainter(model = state.movieImage),
             contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(460.dp),
+                .fillMaxWidth(),
+
             contentScale = ContentScale.FillBounds
         )
         IconButton(

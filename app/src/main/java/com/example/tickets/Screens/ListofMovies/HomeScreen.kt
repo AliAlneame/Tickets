@@ -39,8 +39,6 @@ import com.example.tickets.R
 import com.example.tickets.Screen
 import com.example.tickets.navigateTOMovieDetails
 import com.example.tickets.ui.theme.GGrey
-
-
 @Composable
 fun HomeScreen(
     navController: NavController,
