@@ -22,8 +22,6 @@ S
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-?
-settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 X
@@ -44,8 +42,6 @@ Fapp/src/main/java/com/example/tickets/Composable/SeatsColumnAndRows.kt,b\a\ba2
 Tapp/src/main/java/com/example/tickets/Screens/ListofMovies/HomeScreenInteractions.kt,9\f\9f6e7af0945dcd292754164c9e1f0f9112a4bf95
 }
 Mapp/src/main/java/com/example/tickets/Screens/ListofMovies/HomeContentType.kt,3\0\30fcc3cdce3c2fd39ae5f35bcfe625c0a4c58d95
-
-Oapp/src/main/java/com/example/tickets/Screens/Booking/BookingScreenViewModel.kt,6\3\63f12aac6e3ed4cfaa5c3534c9cce157d3216f72
 w
 Gapp/src/main/java/com/example/tickets/Screens/Booking/BookingUIState.kt,1\9\1993bee7613b9ace414541be2d8589e0342c5d97
 s
@@ -54,8 +50,6 @@ r
 Bapp/src/main/java/com/example/tickets/Composable/HorizontalEdge.kt,b\5\b5d52d97c76921939de04f235dffa41f98b5da19
 
 Oapp/src/main/java/com/example/tickets/Screens/ListofMovies/HomeScreenUIState.kt,8\f\8f90f4fa7d96f8d8cdc4742da0a6b719b9c3b5d5
-Å
-Qapp/src/main/java/com/example/tickets/Screens/ListofMovies/HomeScreenViewModel.kt,1\c\1cfe5240d9f1b95f497b24670b423b27adb8da0b
 k
 ;app/src/main/java/com/example/tickets/di/RepositoryModel.kt,9\3\934e3e40808162b1cd4385134f44bf5fdfda674c
 r
@@ -68,13 +62,15 @@ w
 Gapp/src/main/java/com/example/tickets/repository/MovieRepositoryImpl.kt,9\9\9999c9203e093eb7cde3ffba47f81a7b947525dd
 t
 Dapp/src/main/java/com/example/tickets/repository/MoviesRepository.kt,6\1\614a23d5ad8ef8413df7020cd87032d3adac2ed7
-e
-5app/src/main/java/com/example/tickets/buttonNavBar.kt,e\9\e94e822178d6303d9455fdb61200d44c6dad13ec
 h
 8app/src/main/java/com/example/tickets/AppDestinations.kt,a\a\aa70ea6dab80833916052d9cf8cb862acb45d09f
-f
-6app/src/main/java/com/example/tickets/BaseViewModel.kt,9\6\967e80cacc5e42d12b2686e75392664daefc5e49
 `
 0app/src/main/java/com/example/tickets/Tickets.kt,3\5\358c9e80a96f8bd819c907aa476734f10131c7f2
 e
 5app/src/main/java/com/example/tickets/MainActivity.kt,7\f\7f93e9c7017f1677b4232bd51167c427c7d03b3b
+\
+,app/src/main/java/com/example/tickets/nav.kt,e\3\e37f5ded1c5672404cdcbfe66b13171e15f52f4c
+a
+1app/src/main/java/com/example/tickets/CinmaApp.kt,b\d\bd8ca024e725a64af296b49ce8ada36e4337ee1a
+Å
+Qapp/src/main/java/com/example/tickets/Screens/MovieDetails/MovieDetailsUIState.kt,1\e\1e9843a1c9931df1ef71da4f7c3b8cfa69feceb2
